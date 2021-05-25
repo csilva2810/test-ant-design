@@ -1,3 +1,4 @@
+const { whenProd } = require("@craco/craco");
 const CracoLessPlugin = require("craco-less");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
@@ -20,7 +21,7 @@ module.exports = {
   ],
   webpack: {
     plugins: {
-      add: [new BundleAnalyzerPlugin()],
+      add: [...whenProd(() => [new BundleAnalyzerPlugin()], [])],
     },
   },
 };

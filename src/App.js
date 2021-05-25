@@ -7,12 +7,15 @@ const { Header, Sider, Content, Footer } = Layout;
 function App() {
   return (
     <Layout style={{ height: "100%" }}>
-      <Header>
+      <Header className="header">
         <Typography.Text>Header</Typography.Text>
       </Header>
       <Layout>
-        <Sider className="sidebar">Sider</Sider>
+        <Sider className="sidebar">Sidebar</Sider>
         <Content>
+          <br />
+          <br />
+          <br />
           <Form />
         </Content>
       </Layout>
