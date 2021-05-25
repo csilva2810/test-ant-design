@@ -1,12 +1,20 @@
-import { Button } from "antd";
-
+import { Button, Layout, Typography } from "antd";
 import "./App.less";
+
+const { Header, Sider, Content, Footer } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <Button type="primary">Button</Button>
-    </div>
+    <Layout style={{ height: "100%" }}>
+      <Header>
+        <Typography.Text>Header</Typography.Text>
+      </Header>
+      <Layout>
+        <Sider className="sidebar">Sider</Sider>
+        <Content>Content</Content>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
   );
 }
 
