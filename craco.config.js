@@ -1,4 +1,6 @@
 const CracoLessPlugin = require("craco-less");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const primaryColor = "#000E5C";
 
@@ -16,4 +18,9 @@ module.exports = {
       },
     },
   ],
+  webpack: {
+    plugins: {
+      add: [new BundleAnalyzerPlugin()],
+    },
+  },
 };
