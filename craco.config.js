@@ -5,23 +5,31 @@ const BundleAnalyzerPlugin =
 
 const primaryColor = "#000E5C";
 
-module.exports = {
-  plugins: [
-    {
-      plugin: CracoLessPlugin,
-      options: {
-        lessLoaderOptions: {
-          lessOptions: {
-            modifyVars: { "@primary-color": primaryColor },
-            javascriptEnabled: true,
+module.exports = () => {
+  const analyzerMode = process.env.REACT_APP_INTERACTIVE_ANALYZE
+    ? "server"
+    : "json";
+
+  return {
+    plugins: [
+      {
+        plugin: CracoLessPlugin,
+        options: {
+          lessLoaderOptions: {
+            lessOptions: {
+              modifyVars: { "@primary-color": primaryColor },
+              javascriptEnabled: true,
+            },
           },
         },
       },
+    ],
+    webpack: {
+      plugins: {
+        add: [
+          ...whenProd(() => [new BundleAnalyzerPlugin({ analyzerMode })], []),
+        ],
+      },
     },
-  ],
-  webpack: {
-    plugins: {
-      add: [...whenProd(() => [new BundleAnalyzerPlugin()], [])],
-    },
-  },
+  };
 };
