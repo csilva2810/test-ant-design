@@ -1,5 +1,6 @@
-import { Button, Layout, Typography } from "antd";
+import { Layout, Typography } from "antd";
 import "./App.less";
+import Form from "./Form";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -11,7 +12,9 @@ function App() {
       </Header>
       <Layout>
         <Sider className="sidebar">Sider</Sider>
-        <Content>Content</Content>
+        <Content>
+          <Form />
+        </Content>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>
