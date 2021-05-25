@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock("antd/lib/_util/responsiveObserve.js");
+global.matchMedia = jest.fn();
+
+test("renders username label", () => {
+  const screen = render(<App />);
+  screen.debug();
+  const userNameLabel = screen.getByText(/Username/i);
+  expect(userNameLabel).toBeInTheDocument();
 });
